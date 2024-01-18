@@ -37,7 +37,7 @@ module rptr_empty
 
     // Memory read-address pointer (okay to use binary to address memory)
     assign raddr     = rbin[ADDRSIZE-1:0];
-    assign rbinnext  = rbin + (rinc & ~rempty);
+    assign rbinnext  = rbin + {ADDRSIZE'(0), (rinc & ~rempty)};
     assign rgraynext = (rbinnext >> 1) ^ rbinnext;
     assign rgraynextm1 = ((rbinnext + 1'b1) >> 1) ^ (rbinnext + 1'b1);
 
